@@ -66,7 +66,7 @@ public class DriverController {
         foundDriver.setName(Optional.ofNullable(driver.getName()).orElse(foundDriver.getName()));
         foundDriver.setBirthDate(Optional.ofNullable(driver.getBirthDate()).orElse(foundDriver.getBirthDate()));
         foundDriver.setCpf(Optional.ofNullable(driver.getCpf()).orElse(foundDriver.getCpf()));
-        foundDriver.getEmail(Optional.ofNullable(driver.setEmail()).orElse(foundDriver.setEmail()))
+        foundDriver.setEmail(Optional.ofNullable(driver.getEmail()).orElse(foundDriver.getEmail()))
         return driverRepository.save(foundDriver);
 
     }
