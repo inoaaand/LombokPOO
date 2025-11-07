@@ -5,7 +5,9 @@ import java.time.LocalDate;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
@@ -24,9 +26,11 @@ public class Driver {
     LocalDate birthDate;
 
     @NotBlank(message = "Digite seu cpf...")
+    // @Pattern(regexp=, flags=0)
     String cpf;
 
     @NotBlank(message = "Digite seu email...")
+    @Email
     String email;
 
 }
