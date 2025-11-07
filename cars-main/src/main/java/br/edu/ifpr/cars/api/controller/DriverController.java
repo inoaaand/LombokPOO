@@ -19,6 +19,8 @@ import org.springframework.web.server.ResponseStatusException;
 import br.edu.ifpr.cars.api.exception.ResourceNotFoundException;
 import br.edu.ifpr.cars.domain.Driver;
 import br.edu.ifpr.cars.domain.DriverRepository;
+import jakarta.validation.Valid;
+
 
 @Service
 @RestController
@@ -41,7 +43,7 @@ public class DriverController {
     }
 
     @PostMapping("/drivers")
-    public Driver createDriver(@RequestBody Driver driver) {
+    public Driver createDriver(@RequestBody @Valid Driver driver) {
         return driverRepository.save(driver);
     }
 
