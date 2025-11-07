@@ -22,7 +22,7 @@ public class Driver {
     Long id;
 
     @NotBlank(message = "Digite seu nome...")
-    @Size(min = 2, max = 50)
+    @Size(min = 2, max = 50, message= "seu nome deve ter no minimo dois carcteres....")
     String name;
 
     LocalDate birthDate;
