@@ -49,10 +49,12 @@ public class DriverController {
 
     // update
     @PutMapping("/drivers{id}")
-    public Driver fullUpdateDriver(@PathVariable("id") Long id, @RequestBody Driver driver) {
+    public Driver fullUpdateDriver(@PathVariable("id") Long id, @RequestBody @Valid Driver driver) {
         Driver foundDriver = findDrivers(id);
         foundDriver.setName(driver.getName());
         foundDriver.setBirthDate(driver.getBirthDate());
+        foundDriver.setCpf(driver.getCpf());
+        foundDriver.setEmail(driver.getEmail());
         return driverRepository.save(foundDriver);
 
     }
@@ -63,6 +65,8 @@ public class DriverController {
 
         foundDriver.setName(Optional.ofNullable(driver.getName()).orElse(foundDriver.getName()));
         foundDriver.setBirthDate(Optional.ofNullable(driver.getBirthDate()).orElse(foundDriver.getBirthDate()));
+        foundDriver.setCpf(Optional.ofNullable(driver.getCpf()).orElse(foundDriver.getCpf()));
+        foundDriver.getEmail(Optional.ofNullable(driver.setEmail()).orElse(foundDriver.setEmail()))
         return driverRepository.save(foundDriver);
 
     }
