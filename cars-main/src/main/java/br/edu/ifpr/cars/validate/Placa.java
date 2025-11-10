@@ -16,9 +16,7 @@ import jakarta.validation.Payload;
 @Retention(RetentionPolicy.RUNTIME)
 
 public @interface Placa {
-
-    String message() default "Placa não é válida!";
+    String message() default "Placa inválida! Deve seguir o formato Mercosul (ABC1D23).";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
-
 }

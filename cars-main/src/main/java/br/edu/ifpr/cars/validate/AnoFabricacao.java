@@ -5,11 +5,12 @@ import jakarta.validation.Payload;
 import java.lang.annotation.*;
 
 @Documented
-@Constraint(validatedBy = CNHValidation.class)
+@Constraint(validatedBy = AnoFabricacaoValidation.class)
 @Target({ ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
-public @interface CNH {
-    String message() default "CNH inválida! Deve conter 11 dígitos numéricos.";
+public @interface AnoFabricacao {
+    String message() default "Ano de fabricação inválido.";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }
+

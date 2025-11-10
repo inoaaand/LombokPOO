@@ -4,12 +4,16 @@ import java.time.LocalDate;
 
 import org.hibernate.validator.constraints.br.CPF;
 
+import br.edu.ifpr.cars.validate.AnoFabricacao;
+import br.edu.ifpr.cars.validate.CNH;
+import br.edu.ifpr.cars.validate.Comentario;
+import br.edu.ifpr.cars.validate.Placa;
+import jakarta.persistence.Access;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
@@ -36,13 +40,16 @@ public class Driver {
     String email;
 
 
-    // @PlacaValida
+    @Placa(message = "Digite a placa")
     String placa;
 
+    @CNH(message = "Digite a CNH")
     String cnh;
 
+    @AnoFabricacao(message = "Digite o ano de fabricação")
     int anoCarro;
 
+    @Comentario(message = "Digite seu comentário!")
     String comentario;
 
 }

@@ -5,11 +5,11 @@ import jakarta.validation.Payload;
 import java.lang.annotation.*;
 
 @Documented
-@Constraint(validatedBy = CNHValidation.class)
+@Constraint(validatedBy = ComentarioValidation.class)
 @Target({ ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
-public @interface CNH {
-    String message() default "CNH inválida! Deve conter 11 dígitos numéricos.";
+public @interface Comentario {
+    String message() default "O comentário contém palavras ofensivas.";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }
