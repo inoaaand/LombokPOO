@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -21,9 +23,9 @@ import br.edu.ifpr.cars.domain.Driver;
 import br.edu.ifpr.cars.domain.DriverRepository;
 import jakarta.validation.Valid;
 
-
 @Service
 @RestController
+@RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 public class DriverController {
 
     @Autowired // INJEÇÃO DE DEPENDÊNCIAS
@@ -48,27 +50,26 @@ public class DriverController {
     }
 
     // update
-    @PutMapping("/drivers{id}")
-    public Driver fullUpdateDriver(@PathVariable("id") Long id, @RequestBody @Valid Driver driver) {
-        Driver foundDriver = findDrivers(id);
-        foundDriver.setName(driver.getName());
-        foundDriver.setBirthDate(driver.getBirthDate());
-        foundDriver.setCpf(driver.getCpf());
-        foundDriver.setEmail(driver.getEmail());
-        return driverRepository.save(foundDriver);
-
+    @PutMapping("/drivers/{id}")
+    public Driver fullUpdateDriver(@PathVariable("id") Long id, @RequestBody Driver driver) {
+        Driver foundDrivers = findDrivers(id);
+        foundDrivers.setName(driver.getName());
+        foundDrivers.setBirthDate(driver.getBirthDate());
+        return driverRepository.save(foundDrivers);
     }
 
     @PatchMapping("/drivers/{id}")
-    public Driver incrementalUpdaDriver(@PathVariable("id") Long id, @RequestBody Driver driver) {
+    public Driver incrementalUpdateDriver(@PathVariable("id") Long id,
+            @RequestBody Driver driver) {
         Driver foundDriver = findDrivers(id);
 
-        foundDriver.setName(Optional.ofNullable(driver.getName()).orElse(foundDriver.getName()));
-        foundDriver.setBirthDate(Optional.ofNullable(driver.getBirthDate()).orElse(foundDriver.getBirthDate()));
-        foundDriver.setCpf(Optional.ofNullable(driver.getCpf()).orElse(foundDriver.getCpf()));
-        foundDriver.setEmail(Optional.ofNullable(driver.getEmail()).orElse(foundDriver.getEmail()))
-        return driverRepository.save(foundDriver);
+        foundDriver.setName(Optional.ofNullable(driver.getName())
+                .orElse(foundDriver.getName()));
 
+        foundDriver.setBirthDate(Optional.ofNullable(driver.getBirthDate())
+                .orElse(foundDriver.getBirthDate()));
+
+        return driverRepository.save(foundDriver);
     }
 
     @DeleteMapping("/drivers/{id}")
