@@ -41,7 +41,6 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
-		
 
 		<!-- Banco de dados -->
 		<dependency>
@@ -56,6 +55,27 @@
 			<artifactId>lombok</artifactId>
 			<version>1.18.36</version>
 			<scope>provided</scope>
+		</dependency>
+
+		<!-- Hibernate Validator (necessário para validações como @NotBlank, @Email, @CPF) -->
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>6.2.0.Final</version>
+		</dependency>
+
+		<!-- Jakarta Bean Validation API -->
+		<dependency>
+			<groupId>jakarta.validation</groupId>
+			<artifactId>jakarta.validation-api</artifactId>
+			<version>2.0.2</version>
+		</dependency>
+
+		<!-- Jakarta Expression Language (necessário para Jakarta Validation) -->
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>jakarta.el</artifactId>
+			<version>3.0.0</version>
 		</dependency>
 
 		<!-- Testes desativados -->
