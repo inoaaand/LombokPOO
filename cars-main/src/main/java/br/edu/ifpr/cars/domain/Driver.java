@@ -22,17 +22,25 @@ public class Driver {
     Long id;
 
     @NotBlank(message = "Digite seu nome...")
-    @Size(min = 2, max = 50, message= "Seu nome deve ter no minímo 2 caracteres e no máximo 50.")
+    @Size(min = 2, max = 50, message = "Seu nome deve ter no minímo 2 caracteres e no máximo 50.")
     String name;
 
     LocalDate birthDate;
 
     @NotBlank(message = "Digite seu cpf...")
-    @CPF(message= "O CPF não é valido!")
+    @CPF(message = "O CPF não é valido!")
     String cpf;
 
     @NotBlank(message = "Digite seu email...")
-    @Email(message= "O email não é valido!")
+    @Email(message = "O email não é valido!")
     String email;
+
+    String placa;
+
+    String cnh;
+
+    int anoCarro;
+    
+    String comentario;
 
 }
