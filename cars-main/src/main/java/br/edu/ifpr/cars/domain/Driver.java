@@ -35,12 +35,14 @@ public class Driver {
     @Email(message = "O email não é valido!")
     String email;
 
+
+    // @PlacaValida
     String placa;
 
     String cnh;
 
     int anoCarro;
-    
+
     String comentario;
 
 }
