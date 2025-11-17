@@ -8,7 +8,6 @@ import br.edu.ifpr.cars.validate.AnoFabricacao;
 import br.edu.ifpr.cars.validate.CNH;
 import br.edu.ifpr.cars.validate.Comentario;
 import br.edu.ifpr.cars.validate.Placa;
-import jakarta.persistence.Access;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
