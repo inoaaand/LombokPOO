@@ -24,31 +24,29 @@ public class Driver {
     @GeneratedValue
     Long id;
 
-    @NotBlank(message = "Digite seu nome...")
-    @Size(min = 2, max = 50, message = "Seu nome deve ter no minímo 2 caracteres e no máximo 50.")
+    @NotBlank(message = "Por favor, informe seu nome.")
+    @Size(min = 2, max = 50, message = "O nome deve ter entre 2 e 50 caracteres.")
     String name;
 
     LocalDate birthDate;
 
-    @NotBlank(message = "Digite seu cpf...")
-    @CPF(message = "O CPF não é valido!")
+    @NotBlank(message = "Por favor, informe seu CPF.")
+    @CPF(message = "O CPF informado não é válido.")
     String cpf;
 
-    @NotBlank(message = "Digite seu email...")
-    @Email(message = "O email não é valido!")
+    @NotBlank(message = "Por favor, informe seu email.")
+    @Email(message = "O email informado não é válido.")
     String email;
 
-
-    @Placa(message = "Digite a placa")
+    @Placa(message = "Por favor, informe a placa do veículo.")
     String placa;
 
-    @CNH(message = "Digite a CNH")
+    @CNH(message = "Por favor, informe a CNH.")
     String cnh;
 
-    @AnoFabricacao(message = "Digite o ano de fabricação")
+    @AnoFabricacao(message = "Informe o ano de fabricação do veículo.")
     int anoCarro;
 
-    @Comentario(message = "Digite seu comentário!")
+    @Comentario(message = "Deixe um comentário sobre você ou seu veículo.")
     String comentario;
-
 }

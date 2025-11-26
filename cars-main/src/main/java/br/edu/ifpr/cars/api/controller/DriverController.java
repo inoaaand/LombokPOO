@@ -34,7 +34,7 @@ public class DriverController {
 
     // definir uma Exception personalizada!
     @GetMapping("/drivers/{id}")
-    public Driver findDrivers(@PathVariable("id") Long id) {
+    public Driver findDriver(@PathVariable("id") Long id) {
         return driverRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Driver não encontrado com id: " + id));
 
     }
@@ -47,7 +47,7 @@ public class DriverController {
     // update
     @PutMapping("/drivers/{id}")
     public Driver fullUpdateDriver(@PathVariable("id") Long id, @RequestBody Driver driver) {
-        Driver foundDrivers = findDrivers(id);
+        Driver foundDrivers = findDriver(id);
         foundDrivers.setName(driver.getName());
         foundDrivers.setBirthDate(driver.getBirthDate());
         return driverRepository.save(foundDrivers);
@@ -55,7 +55,7 @@ public class DriverController {
 
     @PatchMapping("/drivers/{id}")
     public Driver incrementalUpdateDriver(@PathVariable("id") Long id, @RequestBody Driver driver) {
-        Driver foundDriver = findDrivers(id);
+        Driver foundDriver = findDriver(id);
 
         foundDriver.setName(Optional.ofNullable(driver.getName()).orElse(foundDriver.getName()));
 
