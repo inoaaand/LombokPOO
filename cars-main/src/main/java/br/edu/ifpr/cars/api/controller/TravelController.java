@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -24,7 +23,6 @@ import br.edu.ifpr.cars.domain.TravelRequestRepository;
 import br.edu.ifpr.cars.domain.TravelStatus;
 
 @RestController
-@RequestMapping("/travels")
 public class TravelController {
 
     @Autowired
@@ -36,7 +34,8 @@ public class TravelController {
     @Autowired
     private DriverRepository driverRepository;
 
-    @PostMapping()
+    @PostMapping("/travels")
+    
     public ResponseEntity<TravelRequest> createTravel(@RequestBody TravelRequest travel) {
 
         if (travel.getOrigem() == null || travel.getOrigem().isBlank()
@@ -47,7 +46,7 @@ public class TravelController {
         }
 
         Passenger passenger = passengerRepository.findById(travel.getPassenger().getId())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Passenger não encontrado"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Passengeiro não encontrado"));
 
         travel.setPassenger(passenger);
         travel.setStatus(TravelStatus.CREATED);
@@ -64,14 +63,14 @@ public class TravelController {
     @GetMapping("/{id}")
     public TravelRequest getTravel(@PathVariable Long id) {
         return travelRequestRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Travel não encontrada"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Viagem não encontrada"));
     }
 
     @PatchMapping("/{id}/accept/{driverId}")
     @Transactional
     public ResponseEntity<TravelRequest> acceptTravel(@PathVariable Long id, @PathVariable Long driverId) {
         TravelRequest travel = travelRequestRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Travel não encontrada"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Viagem não encontrada"));
 
         if (travel.getStatus() == TravelStatus.ACCEPTED || travel.getStatus() == TravelStatus.FINISHED) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Viagem já aceita ou finalizada.");

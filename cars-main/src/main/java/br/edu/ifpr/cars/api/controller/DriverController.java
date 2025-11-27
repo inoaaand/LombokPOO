@@ -58,7 +58,6 @@ public class DriverController {
         Driver foundDriver = findDriver(id);
 
         foundDriver.setName(Optional.ofNullable(driver.getName()).orElse(foundDriver.getName()));
-
         foundDriver.setBirthDate(Optional.ofNullable(driver.getBirthDate()).orElse(foundDriver.getBirthDate()));
 
         return driverRepository.save(foundDriver);
