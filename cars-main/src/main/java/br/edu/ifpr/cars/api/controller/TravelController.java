@@ -34,8 +34,8 @@ public class TravelController {
     @Autowired
     private DriverRepository driverRepository;
 
-    @PostMapping("/travels")
     
+    @PostMapping("/travels")
     public ResponseEntity<TravelRequest> createTravel(@RequestBody TravelRequest travel) {
 
         if (travel.getOrigem() == null || travel.getOrigem().isBlank()
