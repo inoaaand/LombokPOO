@@ -38,14 +38,16 @@ public class Driver {
     @Email(message = "O email informado não é válido.")
     String email;
 
-    @Placa(message = "Por favor, informe a placa do veículo.")
+    @NotBlank(message = "Por favor, informe a placa do veículo.")
+    @Placa
     String placa;
-
-    @CNH(message = "Por favor, informe a CNH.")
-    String cnh;
+    
+    @NotBlank(message = "Por favor, informe a CNH.")
+    @CNH
+    String cnh;    
 
     @AnoFabricacao(message = "Informe o ano de fabricação do veículo.")
-    int anoCarro;
+    Integer anoCarro;
 
     @Comentario(message = "Deixe um comentário sobre você ou seu veículo.")
     String comentario;
