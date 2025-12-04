@@ -8,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Entity
@@ -24,12 +25,13 @@ public class TravelRequest {
     @NotBlank(message = "Informe a cidade de destino.")
     private String destino;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     private Passenger passenger;
 
     @ManyToOne
     private Driver driver;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
     private TravelStatus status;
 
