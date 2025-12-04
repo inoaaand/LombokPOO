@@ -11,7 +11,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class TravelServiceImpl implements TravelService {
+public class TravelServiceImplementacoes implements TravelService {
 
     private final TravelRequestRepository travelRepository;
     private final PassengerRepository passengerRepository;
