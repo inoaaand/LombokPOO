@@ -18,7 +18,7 @@ public class TravelServiceImplementacoes implements TravelService {
     private final DriverRepository driverRepository;
 
     @Override
-    public TravelRequest createTravel(TravelRequest travel) {
+    public TravelRequest criarViagem(TravelRequest travel) {
 
         if (travel.getOrigem() == null || travel.getOrigem().isBlank()
                 || travel.getDestino() == null || travel.getDestino().isBlank()
@@ -37,7 +37,7 @@ public class TravelServiceImplementacoes implements TravelService {
     }
 
     @Override
-    public List<TravelRequest> listAll() {
+    public List<TravelRequest> listarViagens() {
         return travelRepository.findAll();
     }
 
@@ -48,7 +48,7 @@ public class TravelServiceImplementacoes implements TravelService {
     }
 
     @Override
-    public TravelRequest acceptTravel(Long id, Long driverId) {
+    public TravelRequest aceitarViagem(Long id, Long driverId) {
 
         TravelRequest travel = getById(id);
 
@@ -72,7 +72,7 @@ public class TravelServiceImplementacoes implements TravelService {
     }
 
     @Override
-    public TravelRequest refuseTravel(Long id, Long driverId) {
+    public TravelRequest recusarViagem(Long id, Long driverId) {
 
         TravelRequest travel = getById(id);
 
@@ -91,7 +91,7 @@ public class TravelServiceImplementacoes implements TravelService {
     }
 
     @Override
-    public TravelRequest finishTravel(Long id, Long driverId) {
+    public TravelRequest finalizar(Long id, Long driverId) {
 
         TravelRequest travel = getById(id);
 

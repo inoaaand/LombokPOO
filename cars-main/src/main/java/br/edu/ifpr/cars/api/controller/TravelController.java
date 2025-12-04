@@ -18,14 +18,14 @@ public class TravelController {
     private final TravelService travelService;
 
     @PostMapping
-    public ResponseEntity<TravelRequest> create(@RequestBody TravelRequest travel) {
-        TravelRequest created = travelService.createTravel(travel);
-        return ResponseEntity.status(HttpStatus.CREATED).body(created);
+    public ResponseEntity<TravelRequest> criarViagem(@RequestBody TravelRequest viagem) {
+        TravelRequest viagemCreated = travelService.criarViagem(viagem);
+        return ResponseEntity.status(HttpStatus.CREATED).body(viagemCreated);
     }
 
     @GetMapping
-    public List<TravelRequest> list() {
-        return travelService.listAll();
+    public List<TravelRequest> listarViagens() {
+        return travelService.listarViagens();
     }
 
     @GetMapping("/{id}")
@@ -33,18 +33,18 @@ public class TravelController {
         return travelService.getById(id);
     }
 
-    @PatchMapping("/{id}/accept/{driverId}")
-    public TravelRequest accept(@PathVariable Long id, @PathVariable Long driverId) {
-        return travelService.acceptTravel(id, driverId);
+    @PatchMapping("/{id}/aceitar/{driverId}")
+    public TravelRequest aceitar(@PathVariable Long id, @PathVariable Long driverId) {
+        return travelService.aceitarViagem(id, driverId);
     }
 
-    @PatchMapping("/{id}/refuse/{driverId}")
+    @PatchMapping("/{id}/recusar/{driverId}")
     public TravelRequest refuse(@PathVariable Long id, @PathVariable Long driverId) {
-        return travelService.refuseTravel(id, driverId);
+        return travelService.recusarViagem(id, driverId);
     }
 
-    @PatchMapping("/{id}/finish/{driverId}")
+    @PatchMapping("/{id}/finalizar/{driverId}")
     public TravelRequest finish(@PathVariable Long id, @PathVariable Long driverId) {
-        return travelService.finishTravel(id, driverId);
+        return travelService.finalizar(id, driverId);
     }
 }

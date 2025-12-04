@@ -6,15 +6,15 @@ import br.edu.ifpr.cars.domain.TravelRequest;
 
 public interface TravelService {
 
-    TravelRequest createTravel(TravelRequest travel);
+    TravelRequest criarViagem(TravelRequest viagem);
 
-    List<TravelRequest> listAll();
+    List<TravelRequest> listarViagens();
 
     TravelRequest getById(Long id);
 
-    TravelRequest acceptTravel(Long id, Long driverId);
+    TravelRequest aceitarViagem(Long id, Long driverId);
 
-    TravelRequest refuseTravel(Long id, Long driverId);
+    TravelRequest recusarViagem(Long id, Long driverId);
 
-    TravelRequest finishTravel(Long id, Long driverId);
+    TravelRequest finalizar(Long id, Long driverId);
 }
